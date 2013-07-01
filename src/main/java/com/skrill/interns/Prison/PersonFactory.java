@@ -7,12 +7,20 @@ public class PersonFactory {
             return new Overseer(firstName, lastName);
         } else if ("doctor".equals(personType)) {
             return new Doctor(firstName, lastName);
-        } else if ("prisoner".equals(personType)) {
+        } else {
             Prisoner prisoner = new Prisoner(firstName, lastName);
-            prisoner.setType(PrisonerType.Robber);
+            if ("killer".equals(personType)) {
+                prisoner.setType(PrisonerType.Killer);
             return prisoner;
+            } else if ("robber".equals(personType)) {
+                prisoner.setType(PrisonerType.Robber);
+                return prisoner;
+            } else if ("rapist".equals(personType)) {
+                prisoner.setType(PrisonerType.Rapist);
+                return prisoner;
+            }
+            return null;
         }
-        return null;
     }
 
     public Person getPerson(String personType) {

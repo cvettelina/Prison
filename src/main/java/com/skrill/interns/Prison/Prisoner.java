@@ -16,12 +16,12 @@ public class Prisoner extends Person {
     private PrisonerType type;
 
     public Prisoner() {
-        this.status = "Normal";
+        this.status = "Ok";
     }
 
     public Prisoner(String firstName, String lastName) {
         super(firstName, lastName);
-        this.status = "Normal";
+        this.status = "Ok";
         codeNumber++;
     }
 

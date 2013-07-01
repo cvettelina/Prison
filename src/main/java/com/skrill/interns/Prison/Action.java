@@ -7,12 +7,12 @@ public class Action {
     private static void fillThePrison() {
         prison = new ThePrison();
         PersonFactory factory = new PersonFactory();
-        prison.addPerson(factory.getPerson("prisoner", "Ivan", "Ivanov"));
-        prison.addPerson(factory.getPerson("prisoner", "Pesho", "Petrov"));
-        prison.addPerson(factory.getPerson("prisoner", "Gosho", "Georgiev"));
-        prison.addPerson(factory.getPerson("prisoner", "Dragan", "Draganov"));
-        prison.addPerson(factory.getPerson("prisoner", "Petko", "Petkov"));
-        prison.addPerson(factory.getPerson("prisoner", "Jack", "Ivanov"));
+        prison.addPerson(factory.getPerson("robber", "Ivan", "Ivanov"));
+        prison.addPerson(factory.getPerson("robber", "Pesho", "Petrov"));
+        prison.addPerson(factory.getPerson("rapist", "Gosho", "Georgiev"));
+        prison.addPerson(factory.getPerson("rapist", "Dragan", "Draganov"));
+        prison.addPerson(factory.getPerson("robber", "Petko", "Petkov"));
+        prison.addPerson(factory.getPerson("robber", "Jack", "Ivanov"));
         prison.addPerson(factory.getPerson("overseer", "Ricky", "Ivanov"));
         prison.addPerson(factory.getPerson("overseer", "Daniel", "Ivanov"));
         prison.addPerson(factory.getPerson("overseer", "Don", "Ivanov"));
@@ -33,9 +33,13 @@ public class Action {
     }
     public static void main(String[] args) {
         fillThePrison();
-        prison.getRandomPrisoner().attack(prison.getRandomPrisoner());
+        prison.getAlivePrisoner().attack(prison.getAlivePrisoner());
         System.out.println("* * *");
-        prison.getRandomPrisoner().escape();
+        prison.getAlivePrisoner().attack(prison.getAlivePrisoner());
+        System.out.println("* * *");
+        prison.getAlivePrisoner().attack(prison.getAlivePrisoner());
+        System.out.println("* * *");
+        prison.getAlivePrisoner().escape();
     }
 
 }

@@ -7,15 +7,16 @@ import java.util.Random;
 public class ThePrison {
     private List<Person> personsInPrison = new ArrayList<Person>();
 
-    public void addPerson(Person person){
+    public void addPerson(Person person) {
         personsInPrison.add(person);
     }
 
     public Prisoner getRandomPrisoner() {
-        Random rand= new Random();
+        Random rand = new Random();
         int index = rand.nextInt(personsInPrison.size());
         while (!(personsInPrison.get(index) instanceof Prisoner)) {
             index = rand.nextInt(personsInPrison.size());
+
         }
         return (Prisoner) personsInPrison.get(index);
     }
@@ -35,6 +36,14 @@ public class ThePrison {
                 ((Prisoner) personsInPrison.get(i)).addObserver(observer);
             }
         }
+    }
+
+    public Prisoner getAlivePrisoner() {
+        Prisoner prisoner = getRandomPrisoner();
+        while ("Hospital".equals(prisoner.getStatus()) || "Gone".equals(prisoner.getStatus())) {
+            prisoner = getRandomPrisoner();
+        }
+        return prisoner;
     }
 
 }
